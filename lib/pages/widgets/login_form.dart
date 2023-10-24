@@ -18,6 +18,7 @@ class _LoginFormState extends State<LoginForm> {
         key: formKey,
         child: Column(
           children: [
+            const SizedBox(height: 24.0),
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Username',
@@ -31,6 +32,7 @@ class _LoginFormState extends State<LoginForm> {
                 suffixIcon: Icon(Icons.lock_outline_rounded),
               ),
             ),
+            const SizedBox(height: 24.0),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: FilledButton(
