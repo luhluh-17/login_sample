@@ -8,11 +8,14 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
       child: Form(
+        key: formKey,
         child: Column(
           children: [
             TextFormField(
