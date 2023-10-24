@@ -16,6 +16,7 @@ class _SignupFormState extends State<SignupForm> {
       key: formKey,
       child: Column(
         children: [
+          const SizedBox(height: 32.0),
           TextFormField(
             decoration: const InputDecoration(
               labelText: 'Username',
@@ -27,6 +28,14 @@ class _SignupFormState extends State<SignupForm> {
             decoration: const InputDecoration(
               labelText: 'Password',
               suffixIcon: Icon(Icons.lock_outline_rounded),
+            ),
+          ),
+          const SizedBox(height: 24.0),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: FilledButton(
+              onPressed: () {},
+              child: const Text('Signup'),
             ),
           ),
         ],
