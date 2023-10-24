@@ -16,10 +16,13 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
-              width: 40,
-              height: 40,
+            Hero(
+              tag: 'logo',
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 40,
+                height: 40,
+              ),
             ),
             const SizedBox(height: 16),
             Text(
