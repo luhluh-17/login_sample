@@ -23,6 +23,9 @@ class _SignupFormState extends ConsumerState<SignupForm> {
               labelText: 'Username',
               suffixIcon: Icon(Icons.person_2_outlined),
             ),
+            validator: (value) {
+              return value!.isEmpty ? 'Please enter username' : null;
+            },
           ),
           TextFormField(
             obscureText: true,
@@ -30,12 +33,23 @@ class _SignupFormState extends ConsumerState<SignupForm> {
               labelText: 'Password',
               suffixIcon: Icon(Icons.lock_outline_rounded),
             ),
+            validator: (value) {
+              return value!.isEmpty ? 'Please enter password' : null;
+            },
           ),
           const SizedBox(height: 24.0),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Registered Successfully'),
+                    ),
+                  );
+                }
+              },
               child: const Text('Signup'),
             ),
           ),
