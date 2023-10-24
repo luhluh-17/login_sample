@@ -14,6 +14,11 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset(
+              'assets/images/logo.png',
+              width: 40,
+              height: 40,
+            ),
             Text(
               'WalletWise',
               style: theme.textTheme.headlineLarge!.copyWith(
