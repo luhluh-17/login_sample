@@ -21,26 +21,24 @@ class SignUpPage extends StatelessWidget {
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
                 'assets/images/logo.png',
-                width: 80,
-                height: 80,
+                width: 100,
+                height: 100,
               ),
               const SizedBox(height: 16),
               Text(
-                'Welcome to WalletWise!',
-                style: theme.textTheme.headlineSmall!.copyWith(
-                  fontWeight: FontWeight.bold,
+                'Welcome,',
+                style: theme.textTheme.titleLarge!.copyWith(
+                  color: Colors.black.withOpacity(0.25),
                 ),
               ),
               Text(
-                'Where Your Financial Journey Begins',
-                style: theme.textTheme.titleSmall!.copyWith(
+                'Your Financial Journey Begins',
+                style: theme.textTheme.headlineMedium!.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black.withOpacity(0.25),
                 ),
               ),
             ],
