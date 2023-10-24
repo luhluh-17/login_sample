@@ -35,6 +35,13 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             const LoginForm(),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: FilledButton(
+                onPressed: () {},
+                child: const Text('Login'),
+              ),
+            ),
           ],
         ),
       ),
