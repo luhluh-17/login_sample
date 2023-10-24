@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/providers/account_provider.dart';
 
-final usernameProvider = StateProvider<String>((ref) => '');
-final passwordProvider = StateProvider<String>((ref) => '');
+final usernameProvider = StateProvider<String>((_) => '');
+final passwordProvider = StateProvider<String>((_) => '');
+final isVisibleProvider = StateProvider.autoDispose<bool>((_) => false);
 
 class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
@@ -21,6 +22,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     final account = ref.watch(accountProvider);
     final username = ref.watch(usernameProvider);
     final password = ref.watch(passwordProvider);
+    final isVisible = ref.watch(isVisibleProvider);
 
     void validateAccount() {
       if (username == account.username && password == account.password) {
@@ -51,10 +53,19 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               },
             ),
             TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
+              obscureText: !isVisible,
+              decoration: InputDecoration(
                 labelText: 'Password',
-                suffixIcon: Icon(Icons.lock_outline_rounded),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    ref.watch(isVisibleProvider.notifier).state = !isVisible;
+                  },
+                  icon: Icon(
+                    isVisible
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                  ),
+                ),
               ),
               onChanged: (value) {
                 ref.read(passwordProvider.notifier).state = value;
