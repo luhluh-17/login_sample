@@ -42,6 +42,10 @@ class LoginPage extends StatelessWidget {
                 child: const Text('Login'),
               ),
             ),
+            TextButton(
+              onPressed: () {},
+              child: const Text('Don\'t have an account? Signup here'),
+            ),
           ],
         ),
       ),
