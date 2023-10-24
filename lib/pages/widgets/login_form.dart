@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_sample/constants/routes.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -36,7 +37,9 @@ class _LoginFormState extends State<LoginForm> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: FilledButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.home);
+                },
                 child: const Text('Login'),
               ),
             ),
