@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_sample/pages/widgets/login_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -33,6 +34,7 @@ class LoginPage extends StatelessWidget {
                 color: Colors.black.withOpacity(0.25),
               ),
             ),
+            const LoginForm(),
           ],
         ),
       ),
