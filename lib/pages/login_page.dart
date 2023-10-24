@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/pages/widgets/login_form.dart';
 
 class LoginPage extends StatelessWidget {
@@ -43,7 +44,9 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.register);
+              },
               child: const Text('Don\'t have an account? Signup here'),
             ),
           ],
