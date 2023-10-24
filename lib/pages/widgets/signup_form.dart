@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/models/account.dart';
 import 'package:login_sample/providers/account_provider.dart';
 
-final usernameProvider = StateProvider<String>((ref) => '');
-final passwordProvider = StateProvider<String>((ref) => '');
+final usernameProvider = StateProvider.autoDispose<String>((ref) => '');
+final passwordProvider = StateProvider.autoDispose<String>((ref) => '');
 
 class SignupForm extends ConsumerStatefulWidget {
   const SignupForm({super.key});
