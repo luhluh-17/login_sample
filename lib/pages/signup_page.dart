@@ -23,10 +23,13 @@ class SignUpPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                'assets/images/logo.png',
-                width: 100,
-                height: 100,
+              Hero(
+                tag: 'logo',
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 100,
+                  height: 100,
+                ),
               ),
               const SizedBox(height: 16),
               Text(
