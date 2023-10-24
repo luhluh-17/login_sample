@@ -61,10 +61,23 @@ class _SignupFormState extends ConsumerState<SignupForm> {
                     username: username,
                     password: password,
                   );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Registered Successfully'),
-                    ),
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text(
+                          'Registration Sucessful',
+                          textAlign: TextAlign.center,
+                        ),
+                        content: FilledButton(
+                          onPressed: () {
+                            Navigator.of(context)
+                                .popUntil((route) => route.isFirst);
+                          },
+                          child: const Text('Return to Login'),
+                        ),
+                      );
+                    },
                   );
                 }
               },
