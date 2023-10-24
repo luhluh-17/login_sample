@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_sample/pages/widgets/signup_form.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -44,6 +45,7 @@ class SignUpPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SignupForm(),
             ],
           ),
         ),
