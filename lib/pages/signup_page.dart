@@ -8,6 +8,14 @@ class SignUpPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+      ),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
