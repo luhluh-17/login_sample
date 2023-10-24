@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
+import 'package:login_sample/providers/account_provider.dart';
 
 final usernameProvider = StateProvider<String>((ref) => '');
 final passwordProvider = StateProvider<String>((ref) => '');
@@ -17,8 +18,21 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final account = ref.watch(accountProvider);
     final username = ref.watch(usernameProvider);
     final password = ref.watch(passwordProvider);
+
+    void validateAccount() {
+      if (username == account.username && password == account.password) {
+        Navigator.pushNamed(context, Routes.home);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Invalid Account'),
+          ),
+        );
+      }
+    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -50,9 +64,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: FilledButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.home);
-                },
+                onPressed: validateAccount,
                 child: const Text('Login'),
               ),
             ),
