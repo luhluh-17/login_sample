@@ -20,6 +20,13 @@ class LoginPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Text(
+              'Smarter Spending, Easier Saving',
+              style: theme.textTheme.titleSmall!.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.black.withOpacity(0.25),
+              ),
+            ),
           ],
         ),
       ),
