@@ -19,6 +19,7 @@ class LoginPage extends StatelessWidget {
               width: 40,
               height: 40,
             ),
+            const SizedBox(height: 16),
             Text(
               'WalletWise',
               style: theme.textTheme.headlineLarge!.copyWith(
