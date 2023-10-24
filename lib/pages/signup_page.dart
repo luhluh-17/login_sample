@@ -46,16 +46,7 @@ class SignUpPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 32.0),
                 const SignupForm(),
-                const SizedBox(height: 24.0),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: FilledButton(
-                    onPressed: () {},
-                    child: const Text('Signup'),
-                  ),
-                ),
               ],
             ),
           ),
