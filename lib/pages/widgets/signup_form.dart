@@ -8,8 +8,29 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              labelText: 'Username',
+              suffixIcon: Icon(Icons.person_2_outlined),
+            ),
+          ),
+          TextFormField(
+            obscureText: true,
+            decoration: const InputDecoration(
+              labelText: 'Password',
+              suffixIcon: Icon(Icons.lock_outline_rounded),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
