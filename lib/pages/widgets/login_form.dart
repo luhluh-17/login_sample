@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 
-class LoginForm extends StatefulWidget {
+final usernameProvider = StateProvider<String>((ref) => '');
+final passwordProvider = StateProvider<String>((ref) => '');
+
+class LoginForm extends ConsumerStatefulWidget {
   const LoginForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends ConsumerState<LoginForm> {
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final username = ref.watch(usernameProvider);
+    final password = ref.watch(passwordProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Form(
@@ -25,6 +32,9 @@ class _LoginFormState extends State<LoginForm> {
                 labelText: 'Username',
                 suffixIcon: Icon(Icons.person_2_outlined),
               ),
+              onChanged: (value) {
+                ref.read(usernameProvider.notifier).state = value;
+              },
             ),
             TextFormField(
               obscureText: true,
@@ -32,6 +42,9 @@ class _LoginFormState extends State<LoginForm> {
                 labelText: 'Password',
                 suffixIcon: Icon(Icons.lock_outline_rounded),
               ),
+              onChanged: (value) {
+                ref.read(passwordProvider.notifier).state = value;
+              },
             ),
             const SizedBox(height: 24.0),
             SizedBox(
