@@ -13,7 +13,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Form(
         key: formKey,
         child: Column(
@@ -29,6 +29,13 @@ class _LoginFormState extends State<LoginForm> {
               decoration: const InputDecoration(
                 labelText: 'Password',
                 suffixIcon: Icon(Icons.lock_outline_rounded),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: FilledButton(
+                onPressed: () {},
+                child: const Text('Login'),
               ),
             ),
           ],
