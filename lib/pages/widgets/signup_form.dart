@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:login_sample/models/account.dart';
+import 'package:login_sample/providers/account_provider.dart';
+
+final usernameProvider = StateProvider<String>((ref) => '');
+final passwordProvider = StateProvider<String>((ref) => '');
 
 class SignupForm extends ConsumerStatefulWidget {
   const SignupForm({super.key});
@@ -13,6 +18,9 @@ class _SignupFormState extends ConsumerState<SignupForm> {
 
   @override
   Widget build(BuildContext context) {
+    final username = ref.watch(usernameProvider);
+    final password = ref.watch(passwordProvider);
+
     return Form(
       key: formKey,
       child: Column(
@@ -26,6 +34,9 @@ class _SignupFormState extends ConsumerState<SignupForm> {
             validator: (value) {
               return value!.isEmpty ? 'Please enter username' : null;
             },
+            onChanged: (value) {
+              ref.read(usernameProvider.notifier).state = value;
+            },
           ),
           TextFormField(
             obscureText: true,
@@ -36,6 +47,9 @@ class _SignupFormState extends ConsumerState<SignupForm> {
             validator: (value) {
               return value!.isEmpty ? 'Please enter password' : null;
             },
+            onChanged: (value) {
+              ref.read(passwordProvider.notifier).state = value;
+            },
           ),
           const SizedBox(height: 24.0),
           SizedBox(
@@ -43,6 +57,10 @@ class _SignupFormState extends ConsumerState<SignupForm> {
             child: FilledButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  ref.read(accountProvider.notifier).state = Account(
+                    username: username,
+                    password: password,
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Registered Successfully'),
