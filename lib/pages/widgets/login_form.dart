@@ -68,22 +68,31 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 onPressed: () async {
                   final StorageService storageService = StorageService();
 
-                  final String jsonString =
-                      await storageService.readSecureData('account') ?? '{}';
+                  final String? jsonString =
+                      await storageService.readSecureData('account');
 
-                  Map<String, dynamic> jsonMap = json.decode(jsonString);
-                  Account account = Account.fromJson(jsonMap);
-
-                  if (username == account.username &&
-                      password == account.password) {
-                    Navigator.pushNamed(context, Routes.home);
-                  } else {
+                  if (jsonString == null) {
                     // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Invalid Account'),
                       ),
                     );
+                  } else {
+                    Map<String, dynamic> jsonMap = json.decode(jsonString);
+                    Account account = Account.fromJson(jsonMap);
+
+                    if (username == account.username &&
+                        password == account.password) {
+                      Navigator.pushNamed(context, Routes.home);
+                    } else {
+                      // ignore: use_build_context_synchronously
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Invalid Account'),
+                        ),
+                      );
+                    }
                   }
                 },
                 child: const Text('Login'),
