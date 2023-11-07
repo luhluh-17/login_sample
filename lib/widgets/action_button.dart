@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ActionButton extends ConsumerWidget {
   final String text;
   final IconData icon;
+  final VoidCallback onPressed;
 
   const ActionButton({
     super.key,
     required this.text,
     required this.icon,
+    required this.onPressed,
   });
 
   @override
@@ -23,7 +25,7 @@ class ActionButton extends ConsumerWidget {
           child: Card(
             child: IconButton(
               icon: Icon(icon),
-              onPressed: () {},
+              onPressed: onPressed,
             ),
           ),
         ),
