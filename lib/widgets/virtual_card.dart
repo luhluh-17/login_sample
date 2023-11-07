@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:login_sample/providers/account_provider.dart';
 import 'package:login_sample/providers/balance_provider.dart';
 
 class VirtualCard extends ConsumerWidget {
@@ -9,6 +10,7 @@ class VirtualCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
     final double balance = ref.watch(balanceProvider);
+    final username = ref.watch(accountProvider).username;
 
     return Container(
       width: double.infinity,
@@ -20,6 +22,14 @@ class VirtualCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                'Welcome Back,',
+                style: theme.textTheme.bodySmall,
+              ),
+              Text(
+                username,
+                style: theme.textTheme.displaySmall,
+              ),
               Text(
                 'Wallet Balance',
                 style: theme.textTheme.bodySmall,
