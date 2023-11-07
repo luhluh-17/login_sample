@@ -7,10 +7,28 @@ class ActionButtonContainer extends ConsumerWidget {
   const ActionButtonContainer({super.key});
 
   void _deposit(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Deposit'),
-      ),
+    // ignore: use_build_context_synchronously
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Enter Amount',
+            textAlign: TextAlign.center,
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const TextField(),
+              const SizedBox(height: 16.0),
+              FilledButton(
+                onPressed: () {},
+                child: const Text('Deposit'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
