@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/widgets/action_button.dart';
 
 class ActionButtonContainer extends StatelessWidget {
@@ -21,11 +22,7 @@ class ActionButtonContainer extends StatelessWidget {
   }
 
   void _shop(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Shop'),
-      ),
-    );
+    Navigator.pushNamed(context, Routes.shop);
   }
 
   void _transfer(BuildContext context) {
