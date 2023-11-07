@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_sample/widgets/action_button_container.dart';
+import 'package:login_sample/widgets/pie_chart_container.dart';
 import 'package:login_sample/widgets/virtual_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,13 +15,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            VirtualCard(),
-            ActionButtonContainer(),
-          ],
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              VirtualCard(),
+              ActionButtonContainer(),
+            ],
+          ),
         ),
       ),
     );
