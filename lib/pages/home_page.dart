@@ -9,8 +9,18 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: Text('Home Page'),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: const Card(
+              child: Center(
+                child: Text('Card 1'),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
