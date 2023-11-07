@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/models/account.dart';
+import 'package:login_sample/providers/account_provider.dart';
 import 'package:login_sample/services/secure_storage.dart';
 
 final usernameProvider = StateProvider<String>((_) => '');
@@ -84,6 +85,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
                     if (username == account.username &&
                         password == account.password) {
+                      ref.read(accountProvider.notifier).state = account;
                       Navigator.pushNamed(context, Routes.home);
                     } else {
                       // ignore: use_build_context_synchronously
