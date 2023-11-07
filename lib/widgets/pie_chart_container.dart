@@ -9,29 +9,34 @@ class PieChartContainer extends StatelessWidget {
     return SizedBox(
       height: 200,
       width: MediaQuery.of(context).size.width * 0.9,
-      child: PieChart(
-        PieChartData(sections: [
-          PieChartSectionData(
-            color: Colors.red,
-            value: 40,
-            title: 'Food',
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: PieChart(
+            PieChartData(sections: [
+              PieChartSectionData(
+                color: Colors.purple[100],
+                value: 40,
+                title: 'Food',
+              ),
+              PieChartSectionData(
+                color: Colors.purple[200],
+                value: 20,
+                title: 'Transportation',
+              ),
+              PieChartSectionData(
+                color: Colors.purple[300],
+                value: 25,
+                title: 'Online Shopping',
+              ),
+              PieChartSectionData(
+                color: Colors.purple[400],
+                value: 5,
+                title: 'Investment',
+              ),
+            ]),
           ),
-          PieChartSectionData(
-            color: Colors.grey,
-            value: 20,
-            title: 'Transportation',
-          ),
-          PieChartSectionData(
-            color: Colors.blue,
-            value: 25,
-            title: 'Online Shopping',
-          ),
-          PieChartSectionData(
-            color: Colors.yellow,
-            value: 5,
-            title: 'Investment',
-          ),
-        ]),
+        ),
       ),
     );
   }
