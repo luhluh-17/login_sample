@@ -16,9 +16,18 @@ class HomePage extends StatelessWidget {
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.3,
-              child: const Card(
-                child: Center(
-                  child: Text('Card 1'),
+              child: Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Wallet Balance',
+                    ),
+                    Text(
+                      '₱ 10000',
+                    ),
+                  ],
                 ),
               ),
             )
