@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // This provides the default theme for the app
     final ThemeData theme = Theme.of(context);
+    final double boxSize = MediaQuery.of(context).size.width * 0.2;
 
     return Scaffold(
       appBar: AppBar(
@@ -18,6 +19,31 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             VirtualCard(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width: boxSize,
+                  height: boxSize,
+                  child: Card(),
+                ),
+                Container(
+                  width: boxSize,
+                  height: boxSize,
+                  child: Card(),
+                ),
+                Container(
+                  width: boxSize,
+                  height: boxSize,
+                  child: Card(),
+                ),
+                Container(
+                  width: boxSize,
+                  height: boxSize,
+                  child: Card(),
+                ),
+              ],
+            ),
           ],
         ),
       ),
