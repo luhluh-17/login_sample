@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fl_chart: ^0.64.0
   flutter_riverpod: ^2.4.4
+  flutter_secure_storage: ^9.0.0
   webview_flutter: ^4.4.2
 
 dev_dependencies:
