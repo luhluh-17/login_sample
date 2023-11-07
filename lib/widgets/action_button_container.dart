@@ -2,32 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/widgets/action_button.dart';
+import 'package:login_sample/widgets/deposit_dialog.dart';
 
 class ActionButtonContainer extends ConsumerWidget {
   const ActionButtonContainer({super.key});
 
   void _deposit(BuildContext context) {
-    // ignore: use_build_context_synchronously
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text(
-            'Enter Amount',
-            textAlign: TextAlign.center,
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const TextField(),
-              const SizedBox(height: 16.0),
-              FilledButton(
-                onPressed: () {},
-                child: const Text('Deposit'),
-              ),
-            ],
-          ),
-        );
+        return const DepositDialog();
       },
     );
   }
