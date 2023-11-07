@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/widgets/action_button.dart';
 
-class ActionButtonContainer extends StatelessWidget {
+class ActionButtonContainer extends ConsumerWidget {
   const ActionButtonContainer({super.key});
 
   void _deposit(BuildContext context) {
@@ -34,7 +35,7 @@ class ActionButtonContainer extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
