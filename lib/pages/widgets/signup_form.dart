@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/models/account.dart';
+import 'package:login_sample/models/storage_item.dart';
 import 'package:login_sample/providers/account_provider.dart';
+import 'package:login_sample/services/secure_storage.dart';
 
 final usernameProvider = StateProvider.autoDispose<String>((ref) => '');
 final passwordProvider = StateProvider.autoDispose<String>((ref) => '');
@@ -55,12 +59,28 @@ class _SignupFormState extends ConsumerState<SignupForm> {
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  ref.read(accountProvider.notifier).state = Account(
+                  // Create instance of account
+                  final account = Account(
                     username: username,
                     password: password,
                   );
+
+                  // Update account state
+                  ref.read(accountProvider.notifier).state = account;
+
+                  // Create instance of storage
+                  StorageService storageService = StorageService();
+                  // Save Data in Secure Storage
+                  await storageService.writeSecureData(
+                    StorageItem(
+                      'account',
+                      json.encode(account.toJson()),
+                    ),
+                  );
+
+                  // ignore: use_build_context_synchronously
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {

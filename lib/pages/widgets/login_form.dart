@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
-import 'package:login_sample/providers/account_provider.dart';
+import 'package:login_sample/models/account.dart';
+import 'package:login_sample/services/secure_storage.dart';
 
 final usernameProvider = StateProvider<String>((_) => '');
 final passwordProvider = StateProvider<String>((_) => '');
@@ -19,22 +22,9 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final account = ref.watch(accountProvider);
     final username = ref.watch(usernameProvider);
     final password = ref.watch(passwordProvider);
     final isVisible = ref.watch(isVisibleProvider);
-
-    void validateAccount() {
-      if (username == account.username && password == account.password) {
-        Navigator.pushNamed(context, Routes.home);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Invalid Account'),
-          ),
-        );
-      }
-    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -75,7 +65,27 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: FilledButton(
-                onPressed: validateAccount,
+                onPressed: () async {
+                  final StorageService storageService = StorageService();
+
+                  final String jsonString =
+                      await storageService.readSecureData('account') ?? '{}';
+
+                  Map<String, dynamic> jsonMap = json.decode(jsonString);
+                  Account account = Account.fromJson(jsonMap);
+
+                  if (username == account.username &&
+                      password == account.password) {
+                    Navigator.pushNamed(context, Routes.home);
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Invalid Account'),
+                      ),
+                    );
+                  }
+                },
                 child: const Text('Login'),
               ),
             ),
@@ -85,3 +95,5 @@ class _LoginFormState extends ConsumerState<LoginForm> {
     );
   }
 }
+
+class SecureStorage {}
