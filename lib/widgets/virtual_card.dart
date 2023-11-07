@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:login_sample/providers/balance_provider.dart';
 
 class VirtualCard extends ConsumerWidget {
   const VirtualCard({super.key});
@@ -7,6 +8,7 @@ class VirtualCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeData theme = Theme.of(context);
+    final double balance = ref.watch(balanceProvider);
 
     return Container(
       width: double.infinity,
@@ -23,7 +25,7 @@ class VirtualCard extends ConsumerWidget {
                 style: theme.textTheme.bodySmall,
               ),
               Text(
-                '₱ 10000',
+                '₱ $balance',
                 style: theme.textTheme.displaySmall,
               ),
             ],
