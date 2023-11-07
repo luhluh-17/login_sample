@@ -20,8 +20,9 @@ class VirtualCard extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Spacer(),
               Text(
                 'Welcome Back,',
                 style: theme.textTheme.bodySmall,
@@ -30,6 +31,7 @@ class VirtualCard extends ConsumerWidget {
                 username,
                 style: theme.textTheme.displaySmall,
               ),
+              SizedBox(height: 16.0),
               Text(
                 'Wallet Balance',
                 style: theme.textTheme.bodySmall,
@@ -38,6 +40,7 @@ class VirtualCard extends ConsumerWidget {
                 '₱ $balance',
                 style: theme.textTheme.displaySmall,
               ),
+              Spacer(),
             ],
           ),
         ),
