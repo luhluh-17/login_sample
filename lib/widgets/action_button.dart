@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ActionButton extends ConsumerWidget {
-  const ActionButton({super.key});
+  final String text;
+  final IconData icon;
+
+  const ActionButton({
+    super.key,
+    required this.text,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,14 +22,14 @@ class ActionButton extends ConsumerWidget {
           height: boxSize,
           child: Card(
             child: IconButton(
-              icon: const Icon(Icons.add),
+              icon: Icon(icon),
               onPressed: () {},
             ),
           ),
         ),
         const SizedBox(height: 8.0),
         Text(
-          'Add Money',
+          text,
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
