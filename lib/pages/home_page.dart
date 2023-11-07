@@ -18,6 +18,14 @@ class HomePage extends StatelessWidget {
           'Wallet Wise',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        actions: [
+          Card(
+            child: IconButton(
+              icon: const Icon(Icons.person_rounded),
+              onPressed: () {},
+            ),
+          ),
+        ],
       ),
       body: const SingleChildScrollView(
         child: Padding(
