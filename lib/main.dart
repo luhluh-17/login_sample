@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:login_sample/constants/routes.dart';
 import 'package:login_sample/pages/home_page.dart';
 import 'package:login_sample/pages/login_page.dart';
+import 'package:login_sample/pages/shop_page.dart';
 import 'package:login_sample/pages/signup_page.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         Routes.login: (context) => const LoginPage(),
         Routes.register: (context) => const SignUpPage(),
         Routes.home: (context) => const HomePage(),
+        Routes.shop: (context) => const ShopPage(),
       },
     );
   }
