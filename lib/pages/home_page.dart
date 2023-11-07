@@ -14,18 +14,30 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Column(
           children: [
             VirtualCard(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ActionButton(),
-                ActionButton(),
-                ActionButton(),
-                ActionButton(),
+                ActionButton(
+                  text: 'Deposit',
+                  icon: Icons.add,
+                ),
+                ActionButton(
+                  text: 'Expenses',
+                  icon: Icons.payment_rounded,
+                ),
+                ActionButton(
+                  text: 'Shop',
+                  icon: Icons.local_convenience_store_rounded,
+                ),
+                ActionButton(
+                  text: 'Transfer',
+                  icon: Icons.send_rounded,
+                ),
               ],
             ),
           ],
