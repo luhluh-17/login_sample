@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
             children: [
               VirtualCard(),
               ActionButtonContainer(),
+              SizedBox(height: 16.0),
               PieChartContainer()
             ],
           ),
