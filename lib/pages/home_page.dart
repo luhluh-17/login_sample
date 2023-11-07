@@ -14,6 +14,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        title: const Text(
+          'Wallet Wise',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: const SingleChildScrollView(
         child: Padding(
