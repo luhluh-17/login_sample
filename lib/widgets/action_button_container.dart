@@ -4,6 +4,38 @@ import 'package:login_sample/widgets/action_button.dart';
 class ActionButtonContainer extends StatelessWidget {
   const ActionButtonContainer({super.key});
 
+  void _deposit(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Deposit'),
+      ),
+    );
+  }
+
+  void _expenses(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Expenses'),
+      ),
+    );
+  }
+
+  void _shop(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Shop'),
+      ),
+    );
+  }
+
+  void _transfer(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Transfer'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -12,22 +44,22 @@ class ActionButtonContainer extends StatelessWidget {
         ActionButton(
           text: 'Deposit',
           icon: Icons.add,
-          onPressed: () {},
+          onPressed: () => _deposit(context),
         ),
         ActionButton(
           text: 'Expenses',
           icon: Icons.payment_rounded,
-          onPressed: () {},
+          onPressed: () => _expenses(context),
         ),
         ActionButton(
           text: 'Shop',
           icon: Icons.local_convenience_store_rounded,
-          onPressed: () {},
+          onPressed: () => _shop(context),
         ),
         ActionButton(
           text: 'Transfer',
           icon: Icons.send_rounded,
-          onPressed: () {},
+          onPressed: () => _transfer(context),
         ),
       ],
     );
